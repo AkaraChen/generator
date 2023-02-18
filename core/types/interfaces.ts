@@ -1,7 +1,6 @@
 import { Shell, Package } from '@/utils';
 
-export interface ICoreOptions<type> {
-  type: type;
+export interface ICoreOptions {
   framework: IFramework;
   bundler: IBundler;
   tools: Array<ITool>;
@@ -28,8 +27,8 @@ export interface IFeature {
   scripts?: Record<string, string>;
 }
 
-export interface ICore<type> {
-  options: ICoreOptions<type>;
+export interface ICore {
+  options: ICoreOptions;
   package: Package;
 }
 

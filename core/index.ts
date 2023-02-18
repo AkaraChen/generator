@@ -1,8 +1,8 @@
 import { ICore } from './types';
 import { mergeFeature } from '@/utils/feature';
-import { installDeps } from './utils/manager';
+import { installDeps } from '@/utils/manager';
 
-export function core<type>(core: ICore<type>) {
+export function core(core: ICore) {
   const features = mergeFeature(
     ...core.options.tools,
     core.options.bundler,

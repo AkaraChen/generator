@@ -1,4 +1,5 @@
-import { getArray, MaybeArray } from '@/types';
+import { MaybeArray } from '@/types';
+import { getArray } from './others';
 
 export class Shell {
   get raw() {
