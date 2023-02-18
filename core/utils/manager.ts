@@ -1,6 +1,7 @@
-import { Path, Shell } from '@/utils';
-import { EManager, IManager } from '@/types';
-import { existsSync } from 'fs';
+import { Package, Path, Shell } from '@/utils';
+import { EManager, IFeature, IManager } from '@/types';
+import { tryPaths } from './file';
+import { Spawner } from './spawner';
 
 export const npm: IManager = {
   init() {
@@ -11,7 +12,7 @@ export const npm: IManager = {
       'install',
       name,
       {
-        '-D': opts.dev,
+        '-D': opts?.dev,
       },
     ]);
   },
@@ -26,8 +27,8 @@ export const yarn: IManager = {
       'add',
       name,
       {
-        '-D': opts.dev,
-        '-W': opts.isMonorepo,
+        '-D': opts?.dev,
+        '-W': opts?.isMonorepo,
       },
     ]);
   },
@@ -42,8 +43,8 @@ export const pnpm: IManager = {
       'add',
       name,
       {
-        '-D': opts.dev,
-        '-w': opts.isMonorepo,
+        '-D': opts?.dev,
+        '-w': opts?.isMonorepo,
       },
     ]);
   },
@@ -58,8 +59,8 @@ export const bun: IManager = {
       'add',
       name,
       {
-        '-D': opts.dev,
-        '-W': opts.isMonorepo,
+        '-D': opts?.dev,
+        '-W': opts?.isMonorepo,
       },
     ]);
   },
@@ -89,9 +90,13 @@ export const detectManager = (opts: { dir: Path }) => {
   return null;
 };
 
-export function tryPaths(...paths: Path[]) {
-  for (const path of paths) {
-    if (existsSync(path.value)) return path;
-  }
-  return null;
-}
+export const installDeps = (feature: Required<IFeature>, pkg: Package) => {
+  const spawner = new Spawner(pkg.baseDir);
+  const { manager } = pkg;
+  feature.deps.forEach((dep) => {
+    spawner.spawnSync(manager.install(dep, {}));
+  });
+  feature.devDeps.forEach((devDep) => {
+    spawner.spawnSync(manager.install(devDep, { dev: true }));
+  });
+};

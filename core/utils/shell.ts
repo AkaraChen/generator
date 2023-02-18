@@ -1,14 +1,18 @@
 import { getArray, MaybeArray } from '@/types';
 
 export class Shell {
-  raw: string;
+  get raw() {
+    return [this.name, ...this.args].join(' ');
+  }
   needInput: boolean;
+  name: string;
+  args: Array<string>;
   constructor(
     name: string,
     args: Parameters<typeof argsx>[0],
     opts?: { needInput?: boolean }
   ) {
-    this.raw = name + ' ' + argsx(args).join(' ');
+    (this.name = name), (this.args = argsx(args));
     this.needInput = opts?.needInput || false;
   }
 }

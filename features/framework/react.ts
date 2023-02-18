@@ -1,6 +1,6 @@
-import { IFramework } from "@/types";
+import { IFramework } from '@/types';
 
 export const React: IFramework = {
-    deps: ["react", "react-dom"],
-    devDeps: ["@types/react", "@types/react-dom"]
-}
+  deps: ['react', 'react-dom'],
+  devDeps: ['@types/react', '@types/react-dom'],
+};

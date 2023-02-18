@@ -1,15 +1,10 @@
-import {
-  EFramework,
-  EProjectType,
-  EAppBundler,
-  ELibraryBundler,
-} from './enums';
 import { Shell, Package } from '@/utils';
 
 export interface ICoreOptions<type> {
-  type: EProjectType;
-  framework: EFramework;
-  bundler: type extends EProjectType.App ? EAppBundler : ELibraryBundler;
+  type: type;
+  framework: IFramework;
+  bundler: IBundler;
+  tools: Array<ITool>;
 }
 
 export interface ITool {
@@ -19,12 +14,18 @@ export interface ITool {
 
 export interface IFramework {
   deps: Array<string>;
-  devDeps?: Array<string>
+  devDeps?: Array<string>;
 }
 
 export interface IBundler {
   devDeps: Array<string>;
   scripts: Record<string, string>;
+}
+
+export interface IFeature {
+  deps?: Array<string>;
+  devDeps?: Array<string>;
+  scripts?: Record<string, string>;
 }
 
 export interface ICore<type> {
@@ -38,5 +39,5 @@ export interface IManagerMeta {
 
 export interface IManager {
   init(opts: IManagerMeta): Shell;
-  install(name: string, opts: IManagerMeta & { dev: boolean }): Shell;
+  install(name: string, opts: Partial<IManagerMeta & { dev?: boolean }>): Shell;
 }
