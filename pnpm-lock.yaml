@@ -5,7 +5,7 @@ specifiers:
   '@types/node': ^18.14.0
   cross-spawn: ^7.0.3
   prettier: ^2.8.4
-  type-fest: ^3.6.0
+  type-fest: ^4.0.0
   typescript: ^5.0.0
 
 dependencies:
@@ -15,7 +15,7 @@ devDependencies:
   '@types/cross-spawn': 6.0.2
   '@types/node': 18.14.0
   prettier: 2.8.4
-  type-fest: 3.6.0
+  type-fest: 4.0.0
   typescript: 5.0.2
 
 packages:
@@ -66,9 +66,9 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /type-fest/3.6.0:
-    resolution: {integrity: sha512-RqTRtKTzvPpNdDUp1dVkKQRunlPITk4mXeqFlAZoJsS+fLRn8AdPK0TcQDumGayhU7fjlBfiBjsq3pe3rIfXZQ==}
-    engines: {node: '>=14.16'}
+  /type-fest/4.0.0:
+    resolution: {integrity: sha512-d/oYtUnPM9zar2fqqGLYPzgcY0qUlYK0evgNVti93xpzfjGkMgZHu9Lvgrkn0rqGXTgsFRxFamzjGoD9Uo+dgw==}
+    engines: {node: '>=16'}
     dev: true
 
   /typescript/5.0.2:
