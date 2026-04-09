@@ -15,7 +15,7 @@ devDependencies:
   '@types/cross-spawn': 6.0.2
   '@types/node': 18.14.0
   prettier: 2.8.4
-  type-fest: 3.6.0
+  type-fest: 3.13.1
   typescript: 5.0.2
 
 packages:
@@ -66,8 +66,8 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /type-fest/3.6.0:
-    resolution: {integrity: sha512-RqTRtKTzvPpNdDUp1dVkKQRunlPITk4mXeqFlAZoJsS+fLRn8AdPK0TcQDumGayhU7fjlBfiBjsq3pe3rIfXZQ==}
+  /type-fest/3.13.1:
+    resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
     engines: {node: '>=14.16'}
     dev: true
 
